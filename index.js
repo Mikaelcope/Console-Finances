@@ -93,32 +93,24 @@ console.log('----------------')
 var totalMonths = finances.length
 console.log('Total Months: ' + totalMonths)
 
-
 var totalAll = 0
 for(var i = 0; i < finances.length; i++ ) {
   totalAll += finances[i][1]
 }
 console.log('Total: $' +totalAll)
-//Corect so far//
-
 
 var totalchange = 0
 var averagechange = 0
 
 for(var i = 1; i < finances.length; i++) {
   var difference = finances[i][1] - finances[i -1][1]
-  totalchange = totalchange + difference
+  totalchange += difference
 }
 var averagechange = totalchange / ( totalMonths - 1 )
 console.log('Average Change: ' + averagechange.toFixed(2))
-//Correct so far//
-
-
 
 var greatestdifference = ['',0]
 var monthlychange = 0
-
-
 
 for(var i = 1; i < finances.length; i++) {
   var currentmonth = finances[i][0]
