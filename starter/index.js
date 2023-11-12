@@ -87,37 +87,68 @@ var finances = [
   ['Feb-2017', 671099],
 ];
 
-var totalMonths = 0
-var netChangeProfits = 0
-var averageChangeInProfits = 0
+console.log('Financial Analysis')
+console.log('----------------')
+
+var totalMonths = finances.length
+console.log('Total Months: ' + totalMonths)
 
 
+var totalAll = 0
+for(var i = 0; i < finances.length; i++ ) {
+  totalAll += finances[i][1]
+}
+console.log('Total: $' +totalAll)
+//Corect so far//
 
-for(var i=1;i<finances.length;i++){
-  
-  var difference = [i][1] - finances[i -1][1]
+
+var totalchange = 0
+var averagechange = 0
+
+for(var i = 1; i < finances.length; i++) {
+  var difference = finances[i][1] - finances[i -1][1]
   totalchange = totalchange + difference
 }
-var averagechange=totalchange / (count-1)
-var monthlydifference = 0
-console.log('Average of the changes in Profit/Loss over period: $' + averagechange.toFixed(2))
+var averagechange = totalchange / ( totalMonths - 1 )
+console.log('Average Change: ' + averagechange.toFixed(2))
+//Correct so far//
 
 
 
-var greatestmonthlydifference = ['',0]
+var greatestdifference = ['',0]
+var monthlychange = 0
 
 
 
-for(var i=1;i<finances.length;i++){
+for(var i = 1; i < finances.length; i++) {
   var currentmonth = finances[i][0]
-  var monthlydifference = [i][1] - finances[i -1][1]
-
-  if (monthlydifference >= greatestmonthlydifference[1]){
-    greatestmonthlydifference = monthlydifference [curentmonth, monthldifference]
-
+  var monthlychange = finances[i][1] - finances[i -1][1]
+  if ( monthlychange >= greatestdifference[1] ) {
+    greatestdifference = [currentmonth, monthlychange]
   }
 }
-console.log('The greatest increase in month-tomonth profit was: $' + greatestmonthlydifference[1])
+
+console.log('Greatest Increase in Profit/Losses: ' + greatestdifference[0] + ' ($' + greatestdifference[1] +')' )
+
+var greatestdecrease = ['',0]
+
+for(var i = 1; i < finances.length; i++) {
+  var currentmonth = finances[i][0]
+  var monthlychange = finances[i][1] - finances[i -1][1]
+  if ( monthlychange <= greatestdecrease[1] ) {
+    greatestdecrease = [currentmonth, monthlychange]
+  }
+}
+
+console.log('Greatest Decrease in Profit/Losses: ' + greatestdecrease[0] + ' ($' + greatestdecrease[1] +')' )
+
+
+
+
+
+
+
+//Correct//
 
 
 
